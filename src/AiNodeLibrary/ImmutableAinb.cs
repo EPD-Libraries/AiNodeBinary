@@ -7,7 +7,8 @@ public ref struct ImmutableAinb
 {
     public AinbHeader Header;
     public Span<AinbCommand> Commands;
-
+    public Span<AinbNode> Nodes;
+    
     public ImmutableAinb(ref RevrsReader reader)
     {
         Header = reader.Read<AinbHeader>();
@@ -21,5 +22,6 @@ public ref struct ImmutableAinb
         }
 
         Commands = reader.ReadSpan<AinbCommand>(Header.CommandCount);
+        Nodes = reader.ReadSpan<AinbNode>(Header.NodeCount);
     }
 }
