@@ -26,7 +26,7 @@ public struct AinbHeader
     public int MultiParametersArrayOffset;
     public int AttachmentParametersOffset;
     public int AttachmentParametersIndexArrayOffset;
-    public int ExpressionBinarySectionOffset;
+    public int ExbSectionOffset;
     public int ChildReplacmentTableOffset;
     public int PreconditionNodeArrayOffset;
 
