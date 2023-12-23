@@ -6,6 +6,7 @@ namespace AiNodeLibrary;
 public ref struct ImmutableAinb
 {
     public AinbHeader Header;
+    public Span<AinbCommand> Commands;
 
     public ImmutableAinb(ref RevrsReader reader)
     {
@@ -18,5 +19,7 @@ public ref struct ImmutableAinb
         if (Header.Version is not 0x407 or 0x404) {
             throw new InvalidDataException($"Unsupported version: {Header.Version:x2}");
         }
+
+        Commands = reader.ReadSpan<AinbCommand>(Header.CommandCount);
     }
 }
