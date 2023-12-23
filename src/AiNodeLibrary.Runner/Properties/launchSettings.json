@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AiNodeLibrary.Runner": {
+      "commandName": "Project",
+      "commandLineArgs": "\"D:\\bin\\AINB\\AutoPlacement.root.ainb\""
+    }
+  }
+}
