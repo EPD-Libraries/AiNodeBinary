@@ -1,4 +1,4 @@
-﻿namespace AiNodeLibrary.Structures;
+﻿namespace AinbLibrary.Structures;
 
 public struct AinbCommand
 {

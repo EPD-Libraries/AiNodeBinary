@@ -1,7 +1,7 @@
-﻿using AiNodeLibrary.Common;
+﻿using AinbLibrary.Common;
 using Revrs;
 
-namespace AiNodeLibrary;
+namespace AinbLibrary;
 
 public class Ainb(string name, string category, int version = 0x407)
 {

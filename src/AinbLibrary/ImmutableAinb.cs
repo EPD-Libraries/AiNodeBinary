@@ -1,15 +1,18 @@
-﻿using AiNodeLibrary.Readers;
-using AiNodeLibrary.Structures;
+﻿using AinbLibrary.Readers;
+using AinbLibrary.Structures;
+using AinbLibrary.Structures.Nodes;
 using Revrs;
 
-namespace AiNodeLibrary;
+namespace AinbLibrary;
 
 public ref struct ImmutableAinb
 {
     public AinbHeader Header;
     public Span<AinbCommand> Commands;
     public Span<AinbNode> Nodes;
-    public AinbBlackboardSection LocalBlackboard;
+    public AinbBlackboardSection LocalBlackboardSection;
+    public Span<byte> NodeBodyBlock;
+    public AinbAttachmentParameterSection AttachmentParameterSection;
 
     public ImmutableAinb(ref RevrsReader reader)
     {
@@ -26,6 +29,11 @@ public ref struct ImmutableAinb
         Commands = reader.ReadSpan<AinbCommand>(Header.CommandCount);
         Nodes = reader.ReadSpan<AinbNode>(Header.NodeCount);
 
-        LocalBlackboard = new(ref reader);
+        reader.Seek(Header.LocalBlackboardParametersOffset);
+        LocalBlackboardSection = new(ref reader);
+
+        NodeBodyBlock = reader.Read(Header.AttachmentParametersOffset - reader.Position);
+
+        AttachmentParameterSection = new(ref reader, Header.AttachmentParameterCount);
     }
 }

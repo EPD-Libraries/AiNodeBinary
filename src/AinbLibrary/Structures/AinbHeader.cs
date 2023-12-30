@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace AiNodeLibrary.Structures;
+namespace AinbLibrary.Structures;
 
 [StructLayout(LayoutKind.Sequential, Pack = 4, Size = 0x74)]
 public struct AinbHeader

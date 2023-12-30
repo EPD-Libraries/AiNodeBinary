@@ -1,8 +1,8 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace AiNodeLibrary.Structures.Blackboard;
+namespace AinbLibrary.Structures.Blackboard;
 
-[StructLayout(LayoutKind.Sequential, Size = 8)]
+[StructLayout(LayoutKind.Sequential, Pack = 2, Size = 8)]
 public struct AinbBlackboardEntryHeader
 {
     /// <summary>

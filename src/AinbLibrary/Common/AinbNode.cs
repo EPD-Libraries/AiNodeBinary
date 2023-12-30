@@ -1,6 +1,6 @@
-﻿using AiNodeLibrary.Structures;
+﻿using AinbLibrary.Structures.Nodes;
 
-namespace AiNodeLibrary.Common;
+namespace AinbLibrary.Common;
 
 public class AinbNode(string name)
 {

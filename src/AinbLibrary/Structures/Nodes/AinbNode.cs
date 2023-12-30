@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace AiNodeLibrary.Structures;
+namespace AinbLibrary.Structures.Nodes;
 
 public enum NodeType : ushort
 {
@@ -154,7 +154,7 @@ public struct AinbNode
 {
     public NodeType NodeType;
     public ushort NodeIndex;
-    public ushort AttachmentParametersCount;
+    public ushort AttachmentParameterCount;
     public NodeFlags NodeFlags;
     public uint UserDefinedNodeTypeNameOffset;
     public uint NameHash;
@@ -170,7 +170,7 @@ public struct AinbNode
     public ushort MultiParameterCount;
     public ushort UnknownB;
     public uint BaseAttachmentParameterIndex;
-    public ushort BasePreconditionNode;
+    public ushort BasePreconditionNode; // is this an index?
     public ushort PreconditionNodeCount;
 
     /// <summary>

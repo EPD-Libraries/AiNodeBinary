@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AinbLibrary.Runner": {
+      "commandName": "Project",
+      "commandLineArgs": "\"D:\\bin\\AINB\\AutoPlacement.root.ainb\" \"D:\\bin\\AINB\\Mogurudo.brain.inaccessibletotarget.module.ainb\""
+    }
+  }
+}

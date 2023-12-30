@@ -1,4 +1,4 @@
-﻿namespace AiNodeLibrary.Common;
+﻿namespace AinbLibrary.Common;
 
 public class EmbeddedAinb(string name, string category)
 {

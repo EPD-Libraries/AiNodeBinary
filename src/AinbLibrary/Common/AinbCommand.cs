@@ -1,4 +1,4 @@
-﻿namespace AiNodeLibrary.Common;
+﻿namespace AinbLibrary.Common;
 
 public class AinbCommand(string name)
 {
