@@ -1,4 +1,4 @@
-﻿using AinbLibrary.Structures.Nodes;
+﻿using AinbLibrary.Structures;
 
 namespace AinbLibrary.Common;
 

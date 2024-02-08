@@ -1,6 +1,5 @@
-﻿using AinbLibrary.Readers;
+﻿using AinbLibrary.Sections;
 using AinbLibrary.Structures;
-using AinbLibrary.Structures.Nodes;
 using Revrs;
 
 namespace AinbLibrary;
@@ -10,7 +9,7 @@ public ref struct ImmutableAinb
     public AinbHeader Header;
     public Span<AinbCommand> Commands;
     public Span<AinbNode> Nodes;
-    public AinbBlackboardSection LocalBlackboardSection;
+    public AinbBlackboardSection BlackboardSection;
     public Span<byte> NodeBodyBlock;
     public AinbAttachmentParameterSection AttachmentParameterSection;
 
@@ -28,9 +27,7 @@ public ref struct ImmutableAinb
 
         Commands = reader.ReadSpan<AinbCommand>(Header.CommandCount);
         Nodes = reader.ReadSpan<AinbNode>(Header.NodeCount);
-
-        reader.Seek(Header.LocalBlackboardParametersOffset);
-        LocalBlackboardSection = new(ref reader);
+        BlackboardSection = new(ref reader);
 
         NodeBodyBlock = reader.Read(Header.AttachmentParametersOffset - reader.Position);
 

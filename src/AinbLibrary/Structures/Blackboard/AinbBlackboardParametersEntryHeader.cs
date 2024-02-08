@@ -3,7 +3,7 @@
 namespace AinbLibrary.Structures.Blackboard;
 
 [StructLayout(LayoutKind.Sequential, Pack = 2, Size = 8)]
-public struct AinbBlackboardEntryHeader
+public struct AinbBlackboardParametersEntryHeader
 {
     /// <summary>
     /// Number of Entries of the Corresponding Data Type

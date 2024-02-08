@@ -3,7 +3,7 @@
 namespace AinbLibrary.Structures.Blackboard;
 
 [StructLayout(LayoutKind.Sequential, Pack = 4, Size = 0x10)]
-public struct AinbBlackboardFileReference
+public struct AinbBlackboardParametersFileReference
 {
     public uint FilePathOffset;
     public uint FilePathHash;

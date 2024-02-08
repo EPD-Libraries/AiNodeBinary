@@ -17,7 +17,7 @@ public struct AinbHeader
     public int AttachmentParameterCount;
     public int OutputNodeCount;
 
-    public int LocalBlackboardParametersOffset;
+    public int BlackboardParametersOffset;
     public int StringPoolOffset;
     public int EnumResolveArrayOffset;
     public int ImmediateParametersOffset;
@@ -45,7 +45,7 @@ public struct AinbHeader
     /// </summary>
     public int UnknownC;
 
-    public int EmbeddedFilesOffset;
+    public int ModulesArrayOffset;
     public int FileCategoryNameOffset;
 
     /// <summary>

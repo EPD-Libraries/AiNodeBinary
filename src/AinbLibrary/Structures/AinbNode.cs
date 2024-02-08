@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace AinbLibrary.Structures.Nodes;
+namespace AinbLibrary.Structures;
 
 public enum NodeType : ushort
 {

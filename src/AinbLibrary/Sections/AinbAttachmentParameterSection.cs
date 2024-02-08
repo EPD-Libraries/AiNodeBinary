@@ -1,6 +1,6 @@
 ﻿using Revrs;
 
-namespace AinbLibrary.Readers;
+namespace AinbLibrary.Sections;
 
 public ref struct AinbAttachmentParameterSection
 {
