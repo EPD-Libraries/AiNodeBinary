@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using VYaml.Emitter;
 
 namespace AinbLibrary.Structures;
 
@@ -169,7 +170,7 @@ public struct AinbNode
     public ushort ExbIOFieldSize;
     public ushort MultiParameterCount;
     public ushort UnknownB;
-    public uint BaseAttachmentParameterIndex;
+    public int BaseAttachmentParameterIndex;
     public ushort BasePreconditionNode; // is this an index?
     public ushort PreconditionNodeCount;
 
@@ -179,4 +180,56 @@ public struct AinbNode
     public ushort SectionEntryOffset;
     public ushort UnknownC;
     public Guid Id;
+
+    public readonly void EmitYaml(ref Utf8YamlEmitter emitter)
+    {
+        emitter.BeginMapping();
+        {
+            emitter.WriteString(nameof(NodeType));
+            emitter.WriteString(NodeType.ToString());
+
+            emitter.WriteString(nameof(NodeIndex));
+            emitter.WriteInt32(NodeIndex);
+
+            emitter.WriteString(nameof(AttachmentParameterCount));
+            emitter.WriteInt32(AttachmentParameterCount);
+
+            emitter.WriteString(nameof(NodeFlags));
+            emitter.WriteString(NodeFlags.ToString());
+
+            emitter.WriteString(nameof(UserDefinedNodeTypeNameOffset));
+            emitter.WriteUInt32(UserDefinedNodeTypeNameOffset);
+
+            emitter.WriteString(nameof(NameHash));
+            emitter.WriteUInt32(NameHash);
+
+            emitter.WriteString(nameof(UnknownA));
+            emitter.WriteUInt32(UnknownA);
+
+            emitter.WriteString(nameof(NodeBodyOffset));
+            emitter.WriteUInt32(NodeBodyOffset);
+
+            emitter.WriteString(nameof(ExbFunctionCount));
+            emitter.WriteInt32(ExbFunctionCount);
+
+            emitter.WriteString(nameof(ExbIOFieldSize));
+            emitter.WriteInt32(ExbIOFieldSize);
+
+            emitter.WriteString(nameof(MultiParameterCount));
+            emitter.WriteInt32(MultiParameterCount);
+
+            emitter.WriteString(nameof(UnknownB));
+            emitter.WriteInt32(UnknownB);
+
+            emitter.WriteString(nameof(BaseAttachmentParameterIndex));
+            emitter.WriteInt32(BaseAttachmentParameterIndex);
+
+            emitter.WriteString(nameof(BasePreconditionNode));
+            emitter.WriteInt32(BasePreconditionNode);
+
+            emitter.WriteString(nameof(PreconditionNodeCount));
+            emitter.WriteInt32(PreconditionNodeCount);
+        }
+        emitter.EndMapping();
+    }
 }

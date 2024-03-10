@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using VYaml.Emitter;
 
 namespace AinbLibrary.Structures.Blackboard;
 
@@ -19,4 +20,16 @@ public struct AinbBlackboardParametersEntryHeader
     /// Relative Offset of the First Entry of the Corresponding Data Type
     /// </summary>
     public ushort Offset;
+
+    public readonly void EmitYaml(ref Utf8YamlEmitter emitter)
+    {
+        emitter.WriteString(nameof(Count));
+        emitter.WriteInt32(Count);
+
+        emitter.WriteString(nameof(Index));
+        emitter.WriteInt32(Index);
+
+        emitter.WriteString(nameof(Offset));
+        emitter.WriteInt32(Offset);
+    }
 }

@@ -1,4 +1,6 @@
-﻿using System.Runtime.InteropServices;
+﻿using AinbLibrary.Extensions;
+using System.Runtime.InteropServices;
+using VYaml.Emitter;
 
 namespace AinbLibrary.Structures;
 
@@ -67,4 +69,94 @@ public struct AinbHeader
     /// Purpose unknown
     /// </summary>
     public int FileIdentificationHashesOffset;
+
+    public readonly void EmitYaml(ref Utf8YamlEmitter emitter)
+    {
+        emitter.WriteString(nameof(Magic));
+        emitter.WriteString(Magic.GetString());
+
+        emitter.WriteString(nameof(Version));
+        emitter.WriteString(Version.ToString());
+
+        emitter.WriteString(nameof(FileNameOffset));
+        emitter.WriteInt32(FileNameOffset);
+
+        emitter.WriteString(nameof(CommandCount));
+        emitter.WriteInt32(CommandCount);
+
+        emitter.WriteString(nameof(NodeCount));
+        emitter.WriteInt32(NodeCount);
+
+        emitter.WriteString(nameof(PreconditionNodeCount));
+        emitter.WriteInt32(PreconditionNodeCount);
+
+        emitter.WriteString(nameof(AttachmentParameterCount));
+        emitter.WriteInt32(AttachmentParameterCount);
+
+        emitter.WriteString(nameof(OutputNodeCount));
+        emitter.WriteInt32(OutputNodeCount);
+
+        emitter.WriteString(nameof(BlackboardParametersOffset));
+        emitter.WriteInt32(BlackboardParametersOffset);
+
+        emitter.WriteString(nameof(StringPoolOffset));
+        emitter.WriteInt32(StringPoolOffset);
+
+        emitter.WriteString(nameof(EnumResolveArrayOffset));
+        emitter.WriteInt32(EnumResolveArrayOffset);
+
+        emitter.WriteString(nameof(ImmediateParametersOffset));
+        emitter.WriteInt32(ImmediateParametersOffset);
+
+        emitter.WriteString(nameof(ResidentUpdateArrayOffset));
+        emitter.WriteInt32(ResidentUpdateArrayOffset);
+
+        emitter.WriteString(nameof(IOParametersOffset));
+        emitter.WriteInt32(IOParametersOffset);
+
+        emitter.WriteString(nameof(MultiParametersArrayOffset));
+        emitter.WriteInt32(MultiParametersArrayOffset);
+
+        emitter.WriteString(nameof(AttachmentParametersOffset));
+        emitter.WriteInt32(AttachmentParametersOffset);
+
+        emitter.WriteString(nameof(AttachmentParametersIndexArrayOffset));
+        emitter.WriteInt32(AttachmentParametersIndexArrayOffset);
+
+        emitter.WriteString(nameof(ExbSectionOffset));
+        emitter.WriteInt32(ExbSectionOffset);
+
+        emitter.WriteString(nameof(ChildReplacmentTableOffset));
+        emitter.WriteInt32(ChildReplacmentTableOffset);
+
+        emitter.WriteString(nameof(PreconditionNodeArrayOffset));
+        emitter.WriteInt32(PreconditionNodeArrayOffset);
+
+        emitter.WriteString(nameof(UnknownA));
+        emitter.WriteInt32(UnknownA);
+
+        emitter.WriteString(nameof(UnknownB));
+        emitter.WriteInt32(UnknownB);
+
+        emitter.WriteString(nameof(UnknownC));
+        emitter.WriteInt32(UnknownC);
+
+        emitter.WriteString(nameof(ModulesArrayOffset));
+        emitter.WriteInt32(ModulesArrayOffset);
+
+        emitter.WriteString(nameof(FileCategoryNameOffset));
+        emitter.WriteInt32(FileCategoryNameOffset);
+
+        emitter.WriteString(nameof(FileCategory));
+        emitter.WriteInt32(FileCategory);
+
+        emitter.WriteString(nameof(EntryStringsOffset));
+        emitter.WriteInt32(EntryStringsOffset);
+
+        emitter.WriteString(nameof(UnknownD));
+        emitter.WriteInt32(UnknownD);
+
+        emitter.WriteString(nameof(FileIdentificationHashesOffset));
+        emitter.WriteInt32(FileIdentificationHashesOffset);
+    }
 }

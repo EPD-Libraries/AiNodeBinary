@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using VYaml.Emitter;
 
 namespace AinbLibrary.Structures.Blackboard;
 
@@ -10,7 +11,7 @@ public struct AinbBlackboardParametersEntry
     /// <summary>
     /// Notes
     /// </summary>
-    public uint NotesOffset;
+    public int NotesOffset;
 
     [StructLayout(LayoutKind.Explicit, CharSet = CharSet.Ansi, Pack = 4, Size = 4)]
     public readonly struct NameOffsetAndFlagsBitfield
@@ -33,5 +34,27 @@ public struct AinbBlackboardParametersEntry
         public readonly int IsValidFileReference {
             get => Value >> 31;
         }
+    }
+
+    public readonly void EmitYaml(ref Utf8YamlEmitter emitter)
+    {
+        emitter.BeginMapping();
+        {
+            emitter.WriteString(nameof(NameOffsetAndFlags.NameOffset));
+            emitter.WriteInt32(NameOffsetAndFlags.NameOffset);
+
+            emitter.WriteString(nameof(NameOffsetAndFlags.HasFileReference));
+            emitter.WriteInt32(NameOffsetAndFlags.HasFileReference);
+
+            emitter.WriteString(nameof(NameOffsetAndFlags.FileReferenceIndex));
+            emitter.WriteInt32(NameOffsetAndFlags.FileReferenceIndex);
+
+            emitter.WriteString(nameof(NameOffsetAndFlags.IsValidFileReference));
+            emitter.WriteInt32(NameOffsetAndFlags.IsValidFileReference);
+
+            emitter.WriteString(nameof(NotesOffset));
+            emitter.WriteInt32(NotesOffset);
+        }
+        emitter.EndMapping();
     }
 }
