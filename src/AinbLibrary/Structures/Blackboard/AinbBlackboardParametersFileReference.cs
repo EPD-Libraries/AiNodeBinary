@@ -13,16 +13,20 @@ public struct AinbBlackboardParametersFileReference
 
     public readonly void EmitYaml(ref Utf8YamlEmitter emitter)
     {
-        emitter.WriteString(nameof(FilePathOffset));
-        emitter.WriteInt32(FilePathOffset);
+        emitter.BeginMapping();
+        {
+            emitter.WriteString(nameof(FilePathOffset));
+            emitter.WriteInt32(FilePathOffset);
 
-        emitter.WriteString(nameof(FilePathHash));
-        emitter.WriteInt32(FilePathHash);
+            emitter.WriteString(nameof(FilePathHash));
+            emitter.WriteInt32(FilePathHash);
 
-        emitter.WriteString(nameof(UnknownHashA));
-        emitter.WriteInt32(UnknownHashA);
+            emitter.WriteString(nameof(UnknownHashA));
+            emitter.WriteInt32(UnknownHashA);
 
-        emitter.WriteString(nameof(UnknownHashB));
-        emitter.WriteInt32(UnknownHashB);
+            emitter.WriteString(nameof(UnknownHashB));
+            emitter.WriteInt32(UnknownHashB);
+        }
+        emitter.EndMapping();
     }
 }
