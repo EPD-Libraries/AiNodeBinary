@@ -24,7 +24,9 @@ public struct AinbBlackboardParametersEntry
         }
 
         public readonly int HasFileReference {
-            get => (Value >> 23) & 0b1;
+            // If the bit is set, return 0 (false)
+            // otherwise return 1 (true)
+            get => ((Value >> 23) & 0b1) ^ 1;
         }
 
         public readonly int FileReferenceIndex {
