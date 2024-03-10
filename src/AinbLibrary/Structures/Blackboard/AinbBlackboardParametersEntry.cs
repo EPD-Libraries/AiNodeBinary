@@ -22,16 +22,16 @@ public struct AinbBlackboardParametersEntry
             get => Value & 0x3FFFFF;
         }
 
-        public readonly bool HasFileReference {
-            get => ((Value >> 23) & 0b1) == 0x0;
+        public readonly int HasFileReference {
+            get => (Value >> 23) & 0b1;
         }
 
         public readonly int FileReferenceIndex {
             get => (Value >> 24) & 0x7F;
         }
 
-        public readonly bool IsValidFileReference {
-            get => (Value >> 31) == 1;
+        public readonly int IsValidFileReference {
+            get => Value >> 31;
         }
     }
 }

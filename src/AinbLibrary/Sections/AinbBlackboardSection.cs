@@ -1,6 +1,7 @@
 ﻿using AinbLibrary.Structures.Blackboard;
 using Revrs;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 
 namespace AinbLibrary.Sections;
 
@@ -9,27 +10,31 @@ public ref struct AinbBlackboardSection
     public AinbBlackboardParametersEntryHeader StringHeader;
     public Span<AinbBlackboardParametersEntry> StringEntries;
     public Span<uint> StringDefaultValues;
+    public Span<AinbBlackboardParametersFileReference> StringFileReferences;
 
     public AinbBlackboardParametersEntryHeader IntHeader;
     public Span<AinbBlackboardParametersEntry> IntEntries;
     public Span<int> IntDefaultValues;
+    public Span<AinbBlackboardParametersFileReference> IntFileReferences;
 
     public AinbBlackboardParametersEntryHeader FloatHeader;
     public Span<AinbBlackboardParametersEntry> FloatEntries;
     public Span<float> FloatDefaultValues;
+    public Span<AinbBlackboardParametersFileReference> FloatFileReferences;
 
     public AinbBlackboardParametersEntryHeader BoolHeader;
     public Span<AinbBlackboardParametersEntry> BoolEntries;
     public Span<bool> BoolDefaultValues;
+    public Span<AinbBlackboardParametersFileReference> BoolFileReferences;
 
     public AinbBlackboardParametersEntryHeader VectorHeader;
     public Span<AinbBlackboardParametersEntry> VectorEntries;
     public Span<Vector3> VectorDefaultValues;
+    public Span<AinbBlackboardParametersFileReference> VectorFileReferences;
 
     public AinbBlackboardParametersEntryHeader PointerHeader;
     public Span<AinbBlackboardParametersEntry> PointerEntries;
-
-    public Span<AinbBlackboardParametersFileReference> FileReferences;
+    public Span<AinbBlackboardParametersFileReference> PointerFileReferences;
 
     public AinbBlackboardSection(ref RevrsReader reader)
     {
@@ -65,42 +70,32 @@ public ref struct AinbBlackboardSection
             VectorHeader.Count,
             defaultValuesOffset + VectorHeader.Offset);
 
-        // TODO: there's probably a better way to do this
+        StringFileReferences = reader.ReadSpan<AinbBlackboardParametersFileReference>(
+            GetFileReferenceCount(StringEntries, StringHeader.Count));
+        IntFileReferences = reader.ReadSpan<AinbBlackboardParametersFileReference>(
+            GetFileReferenceCount(IntEntries, IntHeader.Count));
+        FloatFileReferences = reader.ReadSpan<AinbBlackboardParametersFileReference>(
+            GetFileReferenceCount(FloatEntries, FloatHeader.Count));
+        BoolFileReferences = reader.ReadSpan<AinbBlackboardParametersFileReference>(
+            GetFileReferenceCount(BoolEntries, BoolHeader.Count));
+        VectorFileReferences = reader.ReadSpan<AinbBlackboardParametersFileReference>(
+            GetFileReferenceCount(VectorEntries, VectorHeader.Count));
+        PointerFileReferences = reader.ReadSpan<AinbBlackboardParametersFileReference>(
+            GetFileReferenceCount(PointerEntries, PointerHeader.Count));
+    }
 
-        int totalFileReferenceCount = 0;
-
-        foreach (var entry in StringEntries) {
-            if (entry.NameOffsetAndFlags.HasFileReference) {
-                totalFileReferenceCount++;
-            }
-        }
-        foreach (var entry in IntEntries) {
-            if (entry.NameOffsetAndFlags.HasFileReference) {
-                totalFileReferenceCount++;
-            }
-        }
-        foreach (var entry in FloatEntries) {
-            if (entry.NameOffsetAndFlags.HasFileReference) {
-                totalFileReferenceCount++;
-            }
-        }
-        foreach (var entry in BoolEntries) {
-            if (entry.NameOffsetAndFlags.HasFileReference) {
-                totalFileReferenceCount++;
-            }
-        }
-        foreach (var entry in VectorEntries) {
-            if (entry.NameOffsetAndFlags.HasFileReference) {
-                totalFileReferenceCount++;
-            }
-        }
-        foreach (var entry in PointerEntries) {
-            if (entry.NameOffsetAndFlags.HasFileReference) {
-                totalFileReferenceCount++;
-            }
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private static int GetFileReferenceCount(in Span<AinbBlackboardParametersEntry> entries, int length)
+    {
+        if (length < 1) {
+            return 0;
         }
 
-        FileReferences = totalFileReferenceCount != 0
-            ? reader.ReadSpan<AinbBlackboardParametersFileReference>(totalFileReferenceCount) : [];
+        int count = entries[0].NameOffsetAndFlags.HasFileReference;
+        for (int i = 1; i < length; i++) {
+            count += entries[i].NameOffsetAndFlags.HasFileReference;
+        }
+
+        return count;
     }
 }
