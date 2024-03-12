@@ -1,10 +1,19 @@
 ﻿using AinbLibrary;
 using AinbLibrary.Yaml;
 using Revrs;
+using System.Text.Json;
 
-byte[] data = File.ReadAllBytes(args[0]);
+JsonSerializerOptions options = new() {
+    WriteIndented = true
+};
+
+byte[] data = File.ReadAllBytes(args[1]);
 RevrsReader reader = new(data, Endianness.Little);
-ImmutableAinb ainb = new(ref reader);
+AinbView ainbView = new(ref reader);
+Ainb ainb = Ainb.FromAinbView(ref ainbView);
 
 using FileStream fs = File.Create("D:\\bin\\AINB\\output.yml");
-ainb.ToYaml(fs);
+ainbView.ToYaml(fs);
+
+using FileStream fsJson = File.Create("D:\\bin\\AINB\\output.json");
+JsonSerializer.Serialize(fsJson, ainb, options);
