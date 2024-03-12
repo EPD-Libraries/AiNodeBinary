@@ -3,7 +3,7 @@ using VYaml.Emitter;
 
 namespace AinbLibrary.Structures;
 
-public enum NodeType : ushort
+public enum AiNodeType : ushort
 {
     /// <summary>
     /// Custom node type, definition in NodeDefinition.
@@ -153,18 +153,18 @@ public enum NodeFlags : byte
 [StructLayout(LayoutKind.Sequential, Pack = 2)]
 public struct AinbNode
 {
-    public NodeType NodeType;
+    public AiNodeType NodeType;
     public ushort NodeIndex;
     public ushort AttachmentParameterCount;
     public NodeFlags NodeFlags;
-    public uint UserDefinedNodeTypeNameOffset;
+    public int UserDefinedNodeTypeNameOffset;
     public uint NameHash;
     public uint UnknownA;
 
     /// <summary>
     /// Relative to the start of the file.
     /// </summary>
-    public uint NodeBodyOffset;
+    public int NodeInfoOffset;
 
     public ushort ExbFunctionCount;
     public ushort ExbIOFieldSize;
@@ -198,7 +198,7 @@ public struct AinbNode
             emitter.WriteString(NodeFlags.ToString());
 
             emitter.WriteString(nameof(UserDefinedNodeTypeNameOffset));
-            emitter.WriteUInt32(UserDefinedNodeTypeNameOffset);
+            emitter.WriteInt32(UserDefinedNodeTypeNameOffset);
 
             emitter.WriteString(nameof(NameHash));
             emitter.WriteUInt32(NameHash);
@@ -206,8 +206,8 @@ public struct AinbNode
             emitter.WriteString(nameof(UnknownA));
             emitter.WriteUInt32(UnknownA);
 
-            emitter.WriteString(nameof(NodeBodyOffset));
-            emitter.WriteUInt32(NodeBodyOffset);
+            emitter.WriteString(nameof(NodeInfoOffset));
+            emitter.WriteInt32(NodeInfoOffset);
 
             emitter.WriteString(nameof(ExbFunctionCount));
             emitter.WriteInt32(ExbFunctionCount);
