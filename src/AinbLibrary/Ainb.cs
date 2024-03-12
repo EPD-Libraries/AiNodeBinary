@@ -1,30 +1,28 @@
 ﻿using AinbLibrary.Common;
+using AinbLibrary.Structures;
 using Revrs;
 
 namespace AinbLibrary;
 
-public class Ainb(string name, string category, int version = 0x407)
+public class Ainb
 {
-    public string Name { get; set; } = name;
-    public string Category { get; set; } = category;
-    public int Version { get; set; } = version;
-
-    public Dictionary<string, dynamic> LocalBlackboard { get; init; } = [];
-
-    public Dictionary<string, AinbCommand> Commands { get; init; } = [];
-    public Dictionary<string, AinbNode> Nodes { get; init; } = [];
-    public Dictionary<string, EmbeddedAinb> EmbeddedAiNodeFiles { get; init; } = [];
-    public Dictionary<string, uint> Hashes { get; init; } = [];
+    public List<AiNode> Nodes { get; init; } = [];
 
     public static Ainb FromBinary(Span<byte> data)
     {
         RevrsReader reader = new(data, Endianness.Little);
-        ImmutableAinb immutable = new(ref reader);
-        return FromImmutable(ref immutable);
+        AinbView immutable = new(ref reader);
+        return FromAinbView(ref immutable);
     }
 
-    public static Ainb FromImmutable(ref ImmutableAinb immutable)
+    public static Ainb FromAinbView(ref AinbView ainb)
     {
-        throw new NotImplementedException();
+        Ainb result = new();
+
+        foreach (AinbNode node in ainb.Nodes) {
+            result.Nodes.Add(AiNode.FromNodeView(ainb, node));
+        }
+
+        return result;
     }
 }
