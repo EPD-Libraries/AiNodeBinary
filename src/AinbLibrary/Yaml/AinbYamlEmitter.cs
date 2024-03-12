@@ -6,7 +6,7 @@ namespace AinbLibrary.Yaml;
 
 public static class AinbYamlEmitter
 {
-    public static void ToYaml(this ref ImmutableAinb ainb, in Stream output)
+    public static void ToYaml(this ref AinbView ainb, in Stream output)
     {
         ArrayBufferWriter<byte> writer = new();
         Utf8YamlEmitter emitter = new(writer);
