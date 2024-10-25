@@ -1,8 +1,8 @@
-﻿using AinbLibrary.Common;
-using AinbLibrary.Structures;
+﻿using AinbLibrary.Legacy.Common;
+using AinbLibrary.Legacy.Structures;
 using Revrs;
 
-namespace AinbLibrary;
+namespace AinbLibrary.Legacy;
 
 public class Ainb
 {

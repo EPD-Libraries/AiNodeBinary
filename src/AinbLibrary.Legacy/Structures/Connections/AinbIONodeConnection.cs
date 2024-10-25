@@ -1,6 +1,6 @@
-﻿namespace AinbLibrary.Structures.Connections;
+﻿namespace AinbLibrary.Legacy.Structures.Connections;
 
-public struct AinbIONodeConnection
+public struct AinbIoNodeConnection
 {
     public int NodeIndex;
     public int Parameter;

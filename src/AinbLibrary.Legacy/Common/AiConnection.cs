@@ -1,7 +1,7 @@
-﻿using AinbLibrary.Common.Connections;
-using AinbLibrary.Structures.Connections;
+﻿using AinbLibrary.Legacy.Common.Connections;
+using AinbLibrary.Legacy.Structures.Connections;
 
-namespace AinbLibrary.Common;
+namespace AinbLibrary.Legacy.Common;
 
 public abstract class AiConnection
 {
@@ -10,7 +10,7 @@ public abstract class AiConnection
     public static AiConnection FromStruct<T>(AinbView ainb, T value) where T : struct
     {
         return value switch {
-            AinbIONodeConnection ioConnection => new AiIOConection {
+            AinbIoNodeConnection ioConnection => new AiIoConection {
                 Index = ioConnection.NodeIndex,
                 Parameter = ainb.GetString(ioConnection.Parameter)
             },

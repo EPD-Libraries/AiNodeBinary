@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using VYaml.Emitter;
 
-namespace AinbLibrary.Structures;
+namespace AinbLibrary.Legacy.Structures;
 
 public enum AiNodeType : ushort
 {
@@ -13,132 +13,132 @@ public enum AiNodeType : ushort
     /// <summary>
     /// Conditionally links to a node depending on the value of a signed int.
     /// </summary>
-    Element_S32Selector = 1,
+    ElementS32Selector = 1,
 
     /// <summary>
     /// Links to nodes sequentially in the order listed.
     /// </summary>
-    Element_Sequential = 2,
+    ElementSequential = 2,
 
     /// <summary>
     /// Links simultaneously to multiple nodes.
     /// </summary>
-    Element_Simultaneous = 3,
+    ElementSimultaneous = 3,
 
     /// <summary>
     /// Conditionally links to a node depending on the value of 32-bit float.
     /// </summary>
-    Element_F32Selector = 4,
+    ElementF32Selector = 4,
 
     /// <summary>
     /// Conditionally links to a node depending on the value of a string.
     /// </summary>
-    Element_StringSelector = 5,
+    ElementStringSelector = 5,
 
     /// <summary>
     /// Links to a node randomly.
     /// </summary>
-    Element_RandomSelector = 6,
+    ElementRandomSelector = 6,
 
     /// <summary>
     /// Conditionally links to a node depending on the value of a bool.
     /// </summary>
-    Element_BoolSelector = 7,
+    ElementBoolSelector = 7,
 
     /// <summary>
     /// See Resident Update Array.
     /// </summary>
-    Element_Fork = 8,
+    ElementFork = 8,
 
     /// <summary>
     /// See Resident Update Array.
     /// </summary>
-    Element_Join = 9,
+    ElementJoin = 9,
 
     /// <summary>
     /// Displays a debug message.
     /// </summary>
-    Element_Alert = 10,
+    ElementAlert = 10,
 
     /// <summary>
     /// Passes values to and from EXB commands.
     /// </summary>
-    Element_Expression = 20,
+    ElementExpression = 20,
 
     /// <summary>
     /// Passes a signed int as output to another node as input.
     /// </summary>
-    Element_ModuleIF_Input_S32 = 100,
+    ElementModuleIfInputS32 = 100,
 
     /// <summary>
     /// Passes a 32-bit float as output to another node as input.
     /// </summary>
-    Element_ModuleIF_Input_F32 = 101,
+    ElementModuleIfInputF32 = 101,
 
     /// <summary>
     /// Passes a vector3f as output to another node as input.
     /// </summary>
-    Element_ModuleIF_Input_Vec3f = 102,
+    ElementModuleIfInputVec3F = 102,
 
     /// <summary>
     /// Passes a string as output to another node as input.
     /// </summary>
-    Element_ModuleIF_Input_String = 103,
+    ElementModuleIfInputString = 103,
 
     /// <summary>
     /// Passes a boolean int as output to another node as input.
     /// </summary>
-    Element_ModuleIF_Input_Bool = 104,
+    ElementModuleIfInputBool = 104,
 
     /// <summary>
     /// Passes a pointer as output to another node as input.
     /// </summary>
-    Element_ModuleIF_Input_Ptr = 105,
+    ElementModuleIfInputPtr = 105,
 
     /// <summary>
     /// Passes a signed int as output to another node as output.
     /// </summary>
-    Element_ModuleIF_Output_S32 = 200,
+    ElementModuleIfOutputS32 = 200,
 
     /// <summary>
     /// Passes a 32-bit float as output to another node as output.
     /// </summary>
-    Element_ModuleIF_Output_F32 = 201,
+    ElementModuleIfOutputF32 = 201,
 
     /// <summary>
     /// Passes a vector3f as output to another node as output.
     /// </summary>
-    Element_ModuleIF_Output_Vec3f = 202,
+    ElementModuleIfOutputVec3F = 202,
 
     /// <summary>
     /// Passes a string as output to another node as output.
     /// </summary>
-    Element_ModuleIF_Output_String = 203,
+    ElementModuleIfOutputString = 203,
 
     /// <summary>
     /// Passes a boolean int as output to another node as output.
     /// </summary>
-    Element_ModuleIF_Output_Bool = 204,
+    ElementModuleIfOutputBool = 204,
 
     /// <summary>
     /// Passes a pointer as output to another node as output.
     /// </summary>
-    Element_ModuleIF_Output_Ptr = 205,
+    ElementModuleIfOutputPtr = 205,
 
     /// <summary>
     /// Unsure, appears to just be a node connected to a ModuleIF node as a child node.
     /// </summary>
-    Element_ModuleIF_Child = 300,
+    ElementModuleIfChild = 300,
 
     /// <summary>
     /// Termination node.
     /// </summary>
-    Element_StateEnd = 400,
+    ElementStateEnd = 400,
 
     /// <summary>
     /// Changes when child nodes are run (Enter - first time visiting a node, Update - every frame, Leave - ran upon leaving the node).
     /// </summary>
-    Element_SplitTiming = 500,
+    ElementSplitTiming = 500,
 }
 
 [Flags]

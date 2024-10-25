@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace AinbLibrary.Structures;
+namespace AinbLibrary.Legacy.Structures;
 
 [StructLayout(LayoutKind.Sequential, Pack = 1, Size = 0xA4)]
 public struct AinbNodeInfo
@@ -12,12 +12,12 @@ public struct AinbNodeInfo
     public ImmediateParameter VectorImmediateParameterInfo;
     public ImmediateParameter PointerImmediateParameterInfo;
 
-    public IOParameter IntIOParameterInfo;
-    public IOParameter BoolIOParameterInfo;
-    public IOParameter FloatIOParameterInfo;
-    public IOParameter StringIOParameterInfo;
-    public IOParameter VectorIOParameterInfo;
-    public IOParameter PointerIOParameterInfo;
+    public IoParameter IntIOParameterInfo;
+    public IoParameter BoolIOParameterInfo;
+    public IoParameter FloatIOParameterInfo;
+    public IoParameter StringIOParameterInfo;
+    public IoParameter VectorIOParameterInfo;
+    public IoParameter PointerIOParameterInfo;
 
     public Connection BoolOrFloatIOConnectionInfo;
     public Connection UnusedConnectionInfo1;
@@ -38,7 +38,7 @@ public struct AinbNodeInfo
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 4, Size = 16)]
-    public struct IOParameter
+    public struct IoParameter
     {
         public int InputBaseIndex;
         public int InputCount;

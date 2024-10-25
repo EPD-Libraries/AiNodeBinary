@@ -1,9 +1,9 @@
-﻿using AinbLibrary.Sections;
-using AinbLibrary.Structures;
+﻿using System.Runtime.InteropServices.Marshalling;
+using AinbLibrary.Legacy.Sections;
+using AinbLibrary.Legacy.Structures;
 using Revrs;
-using System.Runtime.InteropServices.Marshalling;
 
-namespace AinbLibrary;
+namespace AinbLibrary.Legacy;
 
 public ref struct AinbView
 {

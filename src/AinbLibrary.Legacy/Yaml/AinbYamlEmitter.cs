@@ -1,8 +1,8 @@
-﻿using AinbLibrary.Structures;
-using System.Buffers;
+﻿using System.Buffers;
+using AinbLibrary.Legacy.Structures;
 using VYaml.Emitter;
 
-namespace AinbLibrary.Yaml;
+namespace AinbLibrary.Legacy.Yaml;
 
 public static class AinbYamlEmitter
 {

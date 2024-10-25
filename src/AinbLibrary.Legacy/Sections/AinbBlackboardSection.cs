@@ -1,10 +1,10 @@
-﻿using AinbLibrary.Structures.Blackboard;
-using Revrs;
-using System.Numerics;
+﻿using System.Numerics;
 using System.Runtime.CompilerServices;
+using AinbLibrary.Legacy.Structures.Blackboard;
+using Revrs;
 using VYaml.Emitter;
 
-namespace AinbLibrary.Sections;
+namespace AinbLibrary.Legacy.Sections;
 
 public ref struct AinbBlackboardSection
 {

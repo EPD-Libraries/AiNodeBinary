@@ -1,8 +1,8 @@
-﻿using AinbLibrary.Extensions;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
+using AinbLibrary.Legacy.Extensions;
 using VYaml.Emitter;
 
-namespace AinbLibrary.Structures;
+namespace AinbLibrary.Legacy.Structures;
 
 [StructLayout(LayoutKind.Sequential, Pack = 4, Size = 0x74)]
 public struct AinbHeader

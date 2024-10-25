@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using VYaml.Emitter;
 
-namespace AinbLibrary.Structures.Blackboard;
+namespace AinbLibrary.Legacy.Structures.Blackboard;
 
 [StructLayout(LayoutKind.Sequential, Pack = 2, Size = 8)]
 public struct AinbBlackboardParametersEntryHeader

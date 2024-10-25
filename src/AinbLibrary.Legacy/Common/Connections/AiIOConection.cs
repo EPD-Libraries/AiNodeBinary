@@ -1,6 +1,6 @@
-﻿namespace AinbLibrary.Common.Connections;
+﻿namespace AinbLibrary.Legacy.Common.Connections;
 
-public class AiIOConection : AiConnection
+public class AiIoConection : AiConnection
 {
     public required string Parameter { get; set; }
 }

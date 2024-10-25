@@ -1,6 +1,6 @@
-﻿using AinbLibrary.Structures;
+﻿using AinbLibrary.Legacy.Structures;
 
-namespace AinbLibrary.Common;
+namespace AinbLibrary.Legacy.Common;
 
 public class AiCommand
 {

@@ -1,6 +1,6 @@
 ﻿using Revrs.Extensions;
 
-namespace AinbLibrary.Structures;
+namespace AinbLibrary.Legacy.Structures;
 
 public readonly ref struct AinbNodeConnections(Span<byte> buffer, int offsetsPointer)
 {

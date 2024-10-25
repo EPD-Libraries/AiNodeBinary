@@ -1,7 +1,7 @@
-﻿using AinbLibrary.Structures;
-using AinbLibrary.Structures.Connections;
+﻿using AinbLibrary.Legacy.Structures;
+using AinbLibrary.Legacy.Structures.Connections;
 
-namespace AinbLibrary.Common;
+namespace AinbLibrary.Legacy.Common;
 
 public class AiNode
 {
@@ -10,11 +10,11 @@ public class AiNode
     public required string CustomTypeName { get; set; }
     public int Index { get; set; } = -1;
     public NodeFlags Flags { get; set; }
-    public IList<AiConnection> BoolOrFloatIOConnections { get; set; } = [];
+    public IList<AiConnection> BoolOrFloatIoConnections { get; set; } = [];
     public IList<AiConnection> StandardConnections { get; set; } = [];
     public IList<AiConnection> ResidentUpdateConnections { get; set; } = [];
-    public IList<AiConnection> StringIOConnections { get; set; } = [];
-    public IList<AiConnection> IntIOConnections { get; set; } = [];
+    public IList<AiConnection> StringIoConnections { get; set; } = [];
+    public IList<AiConnection> IntIoConnections { get; set; } = [];
     public Guid Id { get; set; } = Guid.Empty;
 
     public static AiNode FromNodeView(AinbView ainb, AinbNode node)
@@ -30,11 +30,11 @@ public class AiNode
 
         AinbNodeContent content = ainb.NodeInfoSection[node];
 
-        FillConnections<AinbIONodeConnection>(ainb,
+        FillConnections<AinbIoNodeConnection>(ainb,
             node,
             content,
             content.Info.BoolOrFloatIOConnectionInfo,
-            result.BoolOrFloatIOConnections);
+            result.BoolOrFloatIoConnections);
         FillConnections(ainb,
             node,
             content,
@@ -45,16 +45,16 @@ public class AiNode
             content,
             content.Info.ResidentUpdateConnectionInfo,
             result.ResidentUpdateConnections);
-        FillConnections<AinbIONodeConnection>(ainb,
+        FillConnections<AinbIoNodeConnection>(ainb,
             node,
             content,
             content.Info.StringIOConnectionInfo,
-            result.StringIOConnections);
-        FillConnections<AinbIONodeConnection>(ainb,
+            result.StringIoConnections);
+        FillConnections<AinbIoNodeConnection>(ainb,
             node,
             content,
             content.Info.IntIOConnectionInfo,
-            result.IntIOConnections);
+            result.IntIoConnections);
 
         return result;
     }

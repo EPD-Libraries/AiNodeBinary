@@ -1,6 +1,6 @@
 ﻿using VYaml.Emitter;
 
-namespace AinbLibrary.Structures;
+namespace AinbLibrary.Legacy.Structures;
 
 public struct AinbCommand
 {

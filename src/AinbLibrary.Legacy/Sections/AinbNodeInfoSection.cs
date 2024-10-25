@@ -1,8 +1,8 @@
-﻿using AinbLibrary.Structures;
+﻿using System.Runtime.CompilerServices;
+using AinbLibrary.Legacy.Structures;
 using Revrs;
-using System.Runtime.CompilerServices;
 
-namespace AinbLibrary.Sections;
+namespace AinbLibrary.Legacy.Sections;
 
 public readonly ref struct AinbNodeInfoSection
 {

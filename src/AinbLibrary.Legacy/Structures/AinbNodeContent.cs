@@ -1,6 +1,6 @@
 ﻿using Revrs;
 
-namespace AinbLibrary.Structures;
+namespace AinbLibrary.Legacy.Structures;
 
 public ref struct AinbNodeContent
 {

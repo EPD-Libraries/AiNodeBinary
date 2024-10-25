@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.Marshalling;
 
-namespace AinbLibrary.Extensions;
+namespace AinbLibrary.Legacy.Extensions;
 
 public static unsafe class Utf8Extension
 {
