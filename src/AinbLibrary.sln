@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AinbLibrary", "AinbLibrary\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AinbLibrary.Runner", "AinbLibrary.Runner\AinbLibrary.Runner.csproj", "{F53128AF-0534-4B4A-8BBE-A538F160AE0C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AinbLibrary.Legacy", "AinbLibrary.Legacy\AinbLibrary.Legacy.csproj", "{C83D8CBD-5121-4330-85B9-51D042D05E0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F53128AF-0534-4B4A-8BBE-A538F160AE0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F53128AF-0534-4B4A-8BBE-A538F160AE0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F53128AF-0534-4B4A-8BBE-A538F160AE0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C83D8CBD-5121-4330-85B9-51D042D05E0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C83D8CBD-5121-4330-85B9-51D042D05E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C83D8CBD-5121-4330-85B9-51D042D05E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C83D8CBD-5121-4330-85B9-51D042D05E0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

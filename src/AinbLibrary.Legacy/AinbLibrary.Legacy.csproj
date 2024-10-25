@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RootNamespace>AinbLibrary.v1</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Revrs" Version="1.0.3" />
+    <PackageReference Include="SimdLinq" Version="1.3.2" />
+    <PackageReference Include="VYaml" Version="0.25.0" />
+  </ItemGroup>
+
+</Project>
