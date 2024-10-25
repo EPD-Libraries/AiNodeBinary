@@ -1,28 +1,31 @@
-﻿using AinbLibrary.Common;
-using AinbLibrary.Structures;
+﻿
+using AinbLibrary.Blackboard;
+using AinbLibrary.IO;
 using Revrs;
 
 namespace AinbLibrary;
 
-public class Ainb
+public class Ainb : IAinb
 {
-    public List<AiNode> Nodes { get; init; } = [];
+    public required string Name { get; set; }
+    public AinbVersion Version { get; set; }
+    public IList<IAinbCommand> Commands { get; set; } = [];
+    public IAinbBlackboard Blackboard { get; set; }
+    public IList<IAinbNode> Nodes { get; set; } = [];
 
-    public static Ainb FromBinary(Span<byte> data)
+    public static T FromBinary<T>(in Span<byte> data) where T : IAinb, new()
     {
-        RevrsReader reader = new(data, Endianness.Little);
-        AinbView immutable = new(ref reader);
-        return FromAinbView(ref immutable);
+        RevrsReader reader = new(data);
+        AinbReader ainbReader = new(ref reader);
+        return FromBinary<T>(ref ainbReader);
     }
-
-    public static Ainb FromAinbView(ref AinbView ainb)
+    
+    public static T FromBinary<T>(ref AinbReader reader) where T : IAinb, new()
     {
-        Ainb result = new();
+        T ainb = new();
+        
+        // TODO: Fill ainb...
 
-        foreach (AinbNode node in ainb.Nodes) {
-            result.Nodes.Add(AiNode.FromNodeView(ainb, node));
-        }
-
-        return result;
+        return ainb;
     }
 }
